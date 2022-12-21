@@ -1,5 +1,5 @@
 # todo-list-client
-Vite, React, Typescript - ToDo List Client for my [ToDo List API](https://github.com/mGlok/todo-list-api),
+Vite, React, Typescript - ToDo List Client for my [ToDo List API](https://github.com/mGlok/todo-list-api)
 
 ## How to install:
 
