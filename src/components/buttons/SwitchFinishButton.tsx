@@ -1,28 +1,37 @@
 import { ReactComponent as CheckIcon } from "../../assets/icons/check-sm.svg";
 import { setFinished, setUnfinished } from "../../../api/api";
-import React from "react";
+import React, {SetStateAction} from "react";
 
 type buttonPropsType = {
   id: number;
   finished: boolean;
-  refresh: number;
-  setRefresh: React.Dispatch<React.SetStateAction<number>>;
+  setTodos: React.Dispatch<SetStateAction<{id: number, todo: string, finished: boolean}[]>>
 };
-const SwitchFinish = ({
+const SwitchFinishButton = ({
   id,
   finished,
-  refresh,
-  setRefresh,
+  setTodos
 }: buttonPropsType) => {
   const handleSetFinished = () => {
     setFinished(id);
-    setRefresh(refresh + 1);
+    setTodos(prevTodos => prevTodos.map(todo => {
+      if (todo.id === id){
+        return {...todo, finished: true};
+      }
+      return todo;
+    }));
   };
 
   const handleSetUnFinished = () => {
     setUnfinished(id);
-    setRefresh(refresh + 1);
+    setTodos(prevTodos => prevTodos.map(todo => {
+      if (todo.id === id){
+        return {...todo, finished: false};
+      }
+      return todo;
+    }));
   };
+
   return (
     <button
       onClick={finished ? handleSetUnFinished : handleSetFinished}
@@ -37,4 +46,4 @@ const SwitchFinish = ({
   );
 };
 
-export default SwitchFinish;
+export default SwitchFinishButton;

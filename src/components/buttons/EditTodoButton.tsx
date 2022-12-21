@@ -1,8 +1,7 @@
 import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
 import { ReactComponent as CheckLargeIcon } from "../../assets/icons/check-md.svg";
 
-const EditTodo = ({ ...props }) => {
-  const { handleEditTodo, editState, setEditState } = props;
+const EditTodoButton = ({ handleEditTodo, editState, setEditState  }) => {
 
   return (
     <>
@@ -14,7 +13,8 @@ const EditTodo = ({ ...props }) => {
         >
           <CheckLargeIcon />
         </button>
-      ) :
+      )
+      :
       (
         <button
           onClick={() => setEditState(!editState)}
@@ -27,4 +27,4 @@ const EditTodo = ({ ...props }) => {
   );
 };
 
-export default EditTodo;
+export default EditTodoButton;

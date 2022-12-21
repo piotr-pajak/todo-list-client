@@ -1,7 +1,6 @@
 import React from "react";
 
-const ToDoContent = ({ ...props }) => {
-  const { editState, todo, toDoContentRef, finished } = props;
+const ToDoContent = ({ editState, todo, toDoContentRef, finished }) => {
   return (
     <>
       {editState ?

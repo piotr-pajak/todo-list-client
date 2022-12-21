@@ -1,18 +1,18 @@
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
 import { deleteToDo } from "../../../api/api";
-import React from "react";
+import React, {SetStateAction} from "react";
 
 type deleteToDoProps = {
   id: number;
-  refresh: number;
-  setRefresh: React.Dispatch<React.SetStateAction<number>>;
+  setTodos: React.Dispatch<SetStateAction<{id: number, todo: string, finished: boolean}[]>>
 };
 
-const DeleteTodo = ({ id, refresh, setRefresh }: deleteToDoProps) => {
+const DeleteTodoButton = ({ id, setTodos }: deleteToDoProps) => {
   const handleDeleteToDo = async () => {
     await deleteToDo(id);
-    setRefresh(refresh + 1);
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id))
   };
+
   return (
     <button
       onClick={handleDeleteToDo}
@@ -23,4 +23,4 @@ const DeleteTodo = ({ id, refresh, setRefresh }: deleteToDoProps) => {
   );
 };
 
-export default DeleteTodo;
+export default DeleteTodoButton;

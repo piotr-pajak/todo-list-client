@@ -1,6 +1,6 @@
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 
-const CreateTodo = ({ handleCreateToDo }) => {
+const CreateTodoButton = ({ handleCreateToDo }) => {
   return (
     <button
       onClick={handleCreateToDo}
@@ -12,4 +12,4 @@ const CreateTodo = ({ handleCreateToDo }) => {
     </button>
   );
 };
-export default CreateTodo;
+export default CreateTodoButton;

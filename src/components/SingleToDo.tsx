@@ -1,38 +1,39 @@
-import SwitchFinish from "./buttons/SwitchFinish";
-import DeleteTodo from "./buttons/DeleteTodo";
+import SwitchFinishButton from "./buttons/SwitchFinishButton";
+import DeleteTodoButton from "./buttons/DeleteTodoButton";
 import React, { useRef, useState } from "react";
-import EditTodo from "./buttons/EditTodo";
+import EditTodoButton from "./buttons/EditTodoButton";
 import { editTodo } from "../../api/api";
 import ToDoContent from "./ToDoContent";
+import {ToDoListType} from "../../custom";
 
 const SingleToDo = ({
   id,
   todo,
   finished,
-  refresh,
-  setRefresh,
-}: toDoListType) =>
+  setTodos,
+}: ToDoListType) =>
 {
   const [editState, setEditState] = useState(false);
   const toDoContentRef = useRef<HTMLInputElement>(null);
 
   const handleEditTodo = async () => {
     let newTodoContent = toDoContentRef?.current?.value!;
-    if (newTodoContent === "") {
-      newTodoContent = todo;
-    }
     await editTodo(id, newTodoContent);
     setEditState(!editState);
-    setRefresh(refresh + 1);
-  };
+    setTodos(prevTodos => prevTodos.map(todo => {
+      if (todo.id === id){
+        return {...todo, todo: newTodoContent}
+      }
+      return todo;
+    }));
+    };
 
   return (
     <div className="flex items-center rounded-md bg-zinc-800">
-      <SwitchFinish
+      <SwitchFinishButton
         id={id}
         finished={finished}
-        refresh={refresh}
-        setRefresh={setRefresh}
+        setTodos={setTodos}
       />
 
       <div className="flex w-full items-center justify-between py-3 px-4">
@@ -41,17 +42,19 @@ const SingleToDo = ({
           finished={finished}
           toDoContentRef={toDoContentRef}
           editState={editState}
+          setTodos={setTodos}
         />
 
         <div className="flex gap-x-3">
 
-          <EditTodo
+          <EditTodoButton
             handleEditTodo={handleEditTodo}
             editState={editState}
             setEditState={setEditState}
+            setTodos={setTodos}
           />
 
-          <DeleteTodo id={id} refresh={refresh} setRefresh={setRefresh} />
+          <DeleteTodoButton id={id} setTodos={setTodos} />
         </div>
       </div>
     </div>

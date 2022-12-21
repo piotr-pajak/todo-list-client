@@ -1,29 +1,27 @@
 import SingleToDo from "./SingleToDo";
-import React from "react";
+import React, { SetStateAction } from "react";
+import { ToDosType } from "../../custom";
 
-type toDoState = {
-  refresh: number;
-  setRefresh: React.Dispatch<React.SetStateAction<number>>;
-  todos: toDosType[];
+type ToDoState = {
+  todos: ToDosType[];
+  setTodos: React.Dispatch<SetStateAction<{id: number, todo: string, finished: boolean}[]>>
 };
 
-const ToDoList = (props: toDoState) => {
-  const { refresh, setRefresh, todos } = props;
+const ToDoList = ({todos, setTodos}: ToDoState) => {
   const sortedTodos = todos.sort(
     (x, y) => Number(x.finished) - Number(y.finished)
   );
 
   return (
     <ul className="mt-6">
-      {sortedTodos.map(({ id, todo, finished }: toDosType, index) => {
+      {sortedTodos.map(({ id, todo, finished }: ToDosType, index) => {
         return (
           <li key={index} className="my-2">
             <SingleToDo
               id={id}
               todo={todo}
               finished={finished}
-              refresh={refresh}
-              setRefresh={setRefresh}
+              setTodos={setTodos}
             />
           </li>
         );
