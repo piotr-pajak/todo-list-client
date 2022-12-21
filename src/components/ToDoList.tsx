@@ -9,10 +9,10 @@ type toDoState = {
 
 const ToDoList = (props: toDoState) => {
   const { refresh, setRefresh, todos } = props;
-  console.log(1);
   const sortedTodos = todos.sort(
     (x, y) => Number(x.finished) - Number(y.finished)
   );
+
   return (
     <ul className="mt-6">
       {sortedTodos.map(({ id, todo, finished }: toDosType, index) => {

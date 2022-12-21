@@ -4,9 +4,7 @@ import React from "react";
 
 type deleteToDoProps = {
   id: number;
-
   refresh: number;
-
   setRefresh: React.Dispatch<React.SetStateAction<number>>;
 };
 

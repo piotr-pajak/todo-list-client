@@ -16,9 +16,7 @@ function App() {
 
   useEffect(() => {
     getAllToDos().then(
-      (
-        data: SetStateAction<{ id: number; todo: string; finished: boolean }[]>
-      ) => setTodos(data)
+      (data: SetStateAction<{ id: number; todo: string; finished: boolean }[]>) => setTodos(data)
     );
   }, [refresh]);
   return (

@@ -11,7 +11,8 @@ const SingleToDo = ({
   finished,
   refresh,
   setRefresh,
-}: toDoListType) => {
+}: toDoListType) =>
+{
   const [editState, setEditState] = useState(false);
   const toDoContentRef = useRef<HTMLInputElement>(null);
 
@@ -41,12 +42,15 @@ const SingleToDo = ({
           toDoContentRef={toDoContentRef}
           editState={editState}
         />
+
         <div className="flex gap-x-3">
+
           <EditTodo
             handleEditTodo={handleEditTodo}
             editState={editState}
             setEditState={setEditState}
           />
+
           <DeleteTodo id={id} refresh={refresh} setRefresh={setRefresh} />
         </div>
       </div>

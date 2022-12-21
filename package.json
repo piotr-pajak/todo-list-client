@@ -1,6 +1,7 @@
 {
   "name": "todo-list-client",
   "private": true,
+  "license": "ISC",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

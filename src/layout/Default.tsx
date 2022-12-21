@@ -12,7 +12,9 @@ const DefaultLayout: React.FC<Props> = ({ children }) => {
   return (
     <LayoutDefaultWrapper>
       <LayoutDefaultHeader />
+
       <main>{children}</main>
+
       <LayoutDefaultFooter />
     </LayoutDefaultWrapper>
   );
