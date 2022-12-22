@@ -1,4 +1,4 @@
-import { CheckMediumIcon, EditIcon } from "../../assets/icons";
+import { CheckMediumIcon, EditIcon } from "../../assets/icons/index.js";
 import React from "react";
 
 

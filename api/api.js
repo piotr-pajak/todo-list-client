@@ -42,27 +42,13 @@ export const editTodo = async (id, todo) => {
     return { success: false, error: error };
   }
 };
-export const setFinished = async (id) => {
-  try {
-    const response = await fetch(`${apiUrl}/setFinished/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
-    });
-    if (response.status === 200) {
-      return response.json();
-    }
-  } catch (error) {
-    return { success: false, error: error };
-  }
-};
 
-export const setUnfinished = async (id) => {
+export const toggleFinishedValue = async (id, finished) => {
   try {
-    const response = await fetch(`${apiUrl}/setUnfinished/${id}`, {
+    const response = await fetch(`${apiUrl}/toggleFinishedValue/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id, finished }),
     });
     if (response.status === 200) {
       return response.json();

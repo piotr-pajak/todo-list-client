@@ -1,4 +1,4 @@
-import { TrashIcon } from "../../assets/icons";
+import { TrashIcon } from "../../assets/icons/index.js";
 import { deleteToDo } from "../../../api/api";
 import React, { SetStateAction } from "react";
 

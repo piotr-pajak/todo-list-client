@@ -23,8 +23,3 @@ type ToDoListType = {
   finished: boolean;
   setTodos: React.Dispatch<SetStateAction<{id: number, todo: string, finished: boolean}[]>>
 };
-
-type refreshStateType = {
-  refresh: number;
-  setRefresh: React.Dispatch<React.SetStateAction<number>>;
-};

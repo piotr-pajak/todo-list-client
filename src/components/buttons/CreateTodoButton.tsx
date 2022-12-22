@@ -1,4 +1,4 @@
-import { AddIcon } from "../../assets/icons";
+import { AddIcon } from "../../assets/icons/index.js";
 
 const CreateTodoButton = ({ handleCreateToDo }) => {
   return (
