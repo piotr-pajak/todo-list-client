@@ -1,6 +1,6 @@
-import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
+import { TrashIcon } from "../../assets/icons";
 import { deleteToDo } from "../../../api/api";
-import React, {SetStateAction} from "react";
+import React, { SetStateAction } from "react";
 
 type deleteToDoProps = {
   id: number;

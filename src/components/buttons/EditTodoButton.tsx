@@ -1,5 +1,6 @@
-import { ReactComponent as EditIcon } from "../../assets/icons/edit.svg";
-import { ReactComponent as CheckLargeIcon } from "../../assets/icons/check-md.svg";
+import { CheckMediumIcon, EditIcon } from "../../assets/icons";
+import React from "react";
+
 
 const EditTodoButton = ({ handleEditTodo, editState, setEditState  }) => {
 
@@ -11,7 +12,7 @@ const EditTodoButton = ({ handleEditTodo, editState, setEditState  }) => {
           onClick={handleEditTodo}
           className="p-1 text-gray-400 duration-150 hover:text-gray-300"
         >
-          <CheckLargeIcon />
+          <CheckMediumIcon />
         </button>
       )
       :

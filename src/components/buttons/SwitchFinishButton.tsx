@@ -1,6 +1,6 @@
-import { ReactComponent as CheckIcon } from "../../assets/icons/check-sm.svg";
+import { CheckSmallIcon } from "../../assets/icons";
 import { setFinished, setUnfinished } from "../../../api/api";
-import React, {SetStateAction} from "react";
+import React, { SetStateAction } from "react";
 
 type buttonPropsType = {
   id: number;
@@ -41,7 +41,7 @@ const SwitchFinishButton = ({
           : "border-gray-400 hover:border-gray-100"
       }`}
     >
-      <span className="m-4">{finished ? <CheckIcon /> : ""}</span>
+      <span className="m-4">{finished ? <CheckSmallIcon /> : ""}</span>
     </button>
   );
 };

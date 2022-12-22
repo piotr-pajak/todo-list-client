@@ -1,0 +1,5 @@
+export { ReactComponent as AddIcon } from "./add.svg"
+export { ReactComponent as CheckMediumIcon } from "./check-md.svg"
+export { ReactComponent as CheckSmallIcon } from "./check-sm.svg"
+export { ReactComponent as EditIcon } from "./edit.svg"
+export { ReactComponent as TrashIcon } from "./trash.svg"

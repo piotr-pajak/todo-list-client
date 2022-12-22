@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import EditTodoButton from "./buttons/EditTodoButton";
 import { editTodo } from "../../api/api";
 import ToDoContent from "./ToDoContent";
-import {ToDoListType} from "../../custom";
+import { ToDoListType } from "../../custom";
 
 const SingleToDo = ({
   id,
@@ -42,7 +42,6 @@ const SingleToDo = ({
           finished={finished}
           toDoContentRef={toDoContentRef}
           editState={editState}
-          setTodos={setTodos}
         />
 
         <div className="flex gap-x-3">
@@ -51,7 +50,6 @@ const SingleToDo = ({
             handleEditTodo={handleEditTodo}
             editState={editState}
             setEditState={setEditState}
-            setTodos={setTodos}
           />
 
           <DeleteTodoButton id={id} setTodos={setTodos} />
