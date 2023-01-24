@@ -3,7 +3,7 @@ import CreateNewToDo from "./components/CreateNewToDo";
 import ToDoList from "./components/ToDoList";
 import { SetStateAction, useEffect, useState } from "react";
 import { getAllToDos } from "../api/api";
-import {ToDosType} from "../custom";
+import { ToDosType } from "../custom";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -15,8 +15,7 @@ function App() {
   ]);
 
   useEffect(() => {
-    getAllToDos()
-        .then((data: SetStateAction<ToDosType[]>) => setTodos(data));
+    getAllToDos().then((data: SetStateAction<ToDosType[]>) => setTodos(data));
   }, []);
 
   return (

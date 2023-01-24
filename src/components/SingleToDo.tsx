@@ -6,35 +6,28 @@ import { editTodo } from "../../api/api";
 import ToDoContent from "./ToDoContent";
 import { ToDoListType } from "../../custom";
 
-const SingleToDo = ({
-  id,
-  todo,
-  finished,
-  setTodos,
-}: ToDoListType) =>
-{
+const SingleToDo = ({ id, todo, finished, setTodos }: ToDoListType) => {
   const [editState, setEditState] = useState(false);
   const toDoContentRef = useRef<HTMLInputElement>(null);
 
-  const handleEditTodo = async () => {
+  const handleEditTodo = async (event) => {
     let newTodoContent = toDoContentRef?.current?.value!;
-    await editTodo(id, newTodoContent);
-    setEditState(!editState);
-    setTodos(prevTodos => prevTodos.map(todo => {
-      if (todo.id === id){
-        return {...todo, todo: newTodoContent}
-      }
-      return todo;
-    }));
-    };
+
+    if (event.key === "Enter") {
+      await editTodo(id, newTodoContent);
+      setEditState(!editState);
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => {
+          if (todo.id === id) return { ...todo, todo: newTodoContent };
+          return todo;
+        })
+      );
+    }
+  };
 
   return (
     <div className="flex items-center rounded-md bg-zinc-800">
-      <SwitchFinishButton
-        id={id}
-        finished={finished}
-        setTodos={setTodos}
-      />
+      <SwitchFinishButton id={id} finished={finished} setTodos={setTodos} />
 
       <div className="flex w-full items-center justify-between py-3 px-4">
         <ToDoContent
@@ -42,10 +35,10 @@ const SingleToDo = ({
           finished={finished}
           toDoContentRef={toDoContentRef}
           editState={editState}
+          handleEditTodo={handleEditTodo}
         />
 
         <div className="flex gap-x-3">
-
           <EditTodoButton
             handleEditTodo={handleEditTodo}
             editState={editState}
@@ -58,4 +51,5 @@ const SingleToDo = ({
     </div>
   );
 };
+
 export default SingleToDo;

@@ -1,26 +1,16 @@
 import { CheckSmallIcon } from "../../assets/icons/index.js";
 import { toggleFinishedValue } from "../../../api/api";
-import React, { SetStateAction } from "react";
-import { ToDosType } from "../../../custom";
+import { buttonPropsType } from "../../../custom";
 
-type buttonPropsType = {
-  id: number;
-  finished: boolean;
-  setTodos: React.Dispatch<SetStateAction<ToDosType[]>>
-};
-const SwitchFinishButton = ({
-  id,
-  finished,
-  setTodos
-}: buttonPropsType) => {
+const SwitchFinishButton = ({ id, finished, setTodos }: buttonPropsType) => {
   const handleToggleFinishedValue = () => {
     toggleFinishedValue(id, !finished);
-    setTodos(prevTodos => prevTodos.map(todo => {
-      if (todo.id === id){
-        return {...todo, finished: !finished};
-      }
-      return todo;
-    }));
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === id) return { ...todo, finished: !finished };
+        return todo;
+      })
+    );
   };
 
   return (

@@ -8,12 +8,14 @@ const CreateNewToDo = ({ setTodos }: SetTodosState) => {
 
   const handleCreateOnPressEnter = async (event) => {
     let newToDo = newToDoRef?.current?.value!;
+
     if (event.key === "Enter") {
       await createToDo(newToDo);
       setTodos((prevTodos) => [
         ...prevTodos,
         { id: prevTodos.length + 1, todo: newToDo, finished: false },
       ]);
+
       if (newToDoRef && newToDoRef.current) {
         newToDoRef.current.value = "";
       }
@@ -27,6 +29,7 @@ const CreateNewToDo = ({ setTodos }: SetTodosState) => {
       ...prevTodos,
       { id: prevTodos.length + 1, todo: newToDo, finished: false },
     ]);
+
     if (newToDoRef && newToDoRef.current) {
       newToDoRef.current.value = "";
     }
