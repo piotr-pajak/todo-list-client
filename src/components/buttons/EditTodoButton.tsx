@@ -1,22 +1,21 @@
 import { CheckMediumIcon, EditIcon } from "../../assets/icons/index.js";
-import React from "react";
+import { EditTodoButtonProps } from "../../../custom";
 
-
-const EditTodoButton = ({ handleEditTodo, editState, setEditState  }) => {
-
+const EditTodoButton = ({
+  handleEditTodo,
+  editState,
+  setEditState,
+}: EditTodoButtonProps) => {
   return (
     <>
-      {editState ?
-      (
+      {editState ? (
         <button
           onClick={handleEditTodo}
           className="p-1 text-gray-400 duration-150 hover:text-gray-300"
         >
           <CheckMediumIcon />
         </button>
-      )
-      :
-      (
+      ) : (
         <button
           onClick={() => setEditState(!editState)}
           className="p-1 text-gray-400 duration-150 hover:text-gray-300"

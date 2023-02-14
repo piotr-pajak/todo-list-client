@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React, { MouseEventHandler, RefObject, SetStateAction } from "react";
 
 declare module "*.svg" {
   import React = require("react");
@@ -34,4 +34,18 @@ type buttonPropsType = {
   id: number;
   finished: boolean;
   setTodos: React.Dispatch<SetStateAction<ToDosType[]>>;
+};
+
+type ToDoContentType = {
+  editState: boolean;
+  todo: string;
+  toDoContentRef: RefObject<HTMLInputElement>;
+  finished: boolean;
+  handleEditTodo: (event: KeyboardEvent<HTMLInputElement>) => void;
+};
+
+type EditTodoButtonProps = {
+  handleEditTodo: MouseEventHandler<HTMLButtonElement>;
+  editState: boolean;
+  setEditState: React.Dispatch<React.SetStateAction<boolean>>;
 };

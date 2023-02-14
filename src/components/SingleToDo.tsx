@@ -13,7 +13,7 @@ const SingleToDo = ({ id, todo, finished, setTodos }: ToDoListType) => {
   const handleEditTodo = async (event) => {
     let newTodoContent = toDoContentRef?.current?.value!;
 
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.type === "click") {
       await editTodo(id, newTodoContent);
       setEditState(!editState);
       setTodos((prevTodos) =>
@@ -44,7 +44,6 @@ const SingleToDo = ({ id, todo, finished, setTodos }: ToDoListType) => {
             editState={editState}
             setEditState={setEditState}
           />
-
           <DeleteTodoButton id={id} setTodos={setTodos} />
         </div>
       </div>
